@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // 🔄 Dopo 1s passa alla pagina di gioco
             setTimeout(() => {
-                window.location.href = "game.html";
+                window.location.href = "pages/game.html";
             }, 1000);
         }, 3000);
     });
