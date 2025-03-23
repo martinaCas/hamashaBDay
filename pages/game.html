@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phasmophobia Bday Party</title>
+    <link rel="stylesheet" href="../css/game.css">
+    <script defer src="../js/game.js"></script>
+</head>
+<body>
+    <div class="ghost-orb"></div>
+    <div class="game-container">
+        <!-- Colonna Sinistra: Badge, Giocatore, Evidenze -->
+        <div class="left-column">
+            <img src="../assets/img/vip-hamasha-card.png" alt="Player Badge" class="vip-id-card">
+            <h2>Collected Evidence</h2>
+            <div class="evidence-container">
+                <p id="evidence-text">No evidence found yet.</p>
+            </div>
+        </div>
+
+        <!-- Colonna Centrale: Ghost List -->
+        <div class="center-column">
+            <h1>Phasmophobia Bday Party</h1>
+            <p class="intro-text">Use the <strong>Special of the Game</strong> to uncover clues and find the ghost!</p>
+            <div id="start-overlay" class="overlay">Click to begin</div>
+        
+            <div class="journal-container">
+                <h2>Ghost List</h2>
+                <div class="ghost-grid">
+                    <p class="ghost-option">Spirit</p>
+                    <p class="ghost-option">Wraith</p>
+                    <p class="ghost-option">Phantom</p>
+                    <p class="ghost-option">Poltergeist</p>
+                    <p class="ghost-option">Banshee</p>
+                    <p class="ghost-option">Jinn</p>
+                    <p class="ghost-option">Mare</p>
+                    <p class="ghost-option">Revenant</p>
+                    <p class="ghost-option">Shade</p>
+                    <p class="ghost-option">Demon</p>
+                    <p class="ghost-option">Yurei</p>
+                    <p class="ghost-option">Oni</p>
+                    <p class="ghost-option">Yokai</p>
+                    <p class="ghost-option">Hantu</p>
+                    <p class="ghost-option">Goryo</p>
+                    <p class="ghost-option">Myling</p>
+                    <p class="ghost-option">Onryo</p>
+                    <p class="ghost-option">The Twins</p>
+                    <p class="ghost-option">Raiju</p>
+                    <p class="ghost-option">Obake</p>
+                    <p id="mimic-ghost" class="ghost-option">The Mimic</p>
+                    <p class="ghost-option">Moroi</p>
+                    <p class="ghost-option">Deogen</p>
+                    <p class="ghost-option">Thaye</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Colonna Destra: Mazzo di Carte -->
+        <div class="right-column">
+            <div class="deck-container">
+                <p class="deck-label">Special of the Game</p><br><br>
+                                   <p id="cards-remaining" class="cards-counter">Cards remaining: 6</p>
+
+                                   <div class="card-deck" id="card-deck">
+                    <div class="card" data-index="0"></div>
+                    <div class="card" data-index="1"></div>
+                    <div class="card" data-index="2"></div>
+                    <div class="card" data-index="3"></div>
+                    <div class="card" data-index="4"></div>
+                    <div class="card" data-index="5"></div>
+                    <div class="card" data-index="6"></div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- 🔥 Moon Card -->
+        <div id="moon-card" class="card-dialog">
+            <div class="card-dialog-content">
+                <img id="moon-display" src="" alt="Moon Card" class="zoomed-card">
+                <button id="close-moon" class="close-button">Close</button>
+            </div>
+        </div>
+
+        <!-- 🔆 Sun Card -->
+        <div id="sun-card" class="card-dialog">
+            <div class="card-dialog-content">
+                <img id="sun-display" src="" alt="Sun Card" class="zoomed-card">
+                <button id="close-sun" class="close-button">Close</button>
+            </div>
+        </div>
+
+        <!-- ⚡ Tower Card -->
+        <div id="tower-card" class="card-dialog">
+            <div class="card-dialog-content">
+                <img id="tower-display" src="" alt="Tower Card" class="zoomed-card">
+                <button id="close-tower" class="close-button">Close</button>
+            </div>
+        </div>
+
+        <!-- 🔮 Altre carte (se servono) -->
+        <div id="wheel-of-fortune-card" class="card-dialog">
+            <div class="card-dialog-content">
+                <img id="wheel-display" src="" alt="Wheel Card" class="zoomed-card">
+                <button id="close-wheel" class="close-button">Close</button>
+            </div>
+        </div>
+
+        <div id="devil-card" class="card-dialog">
+            <div class="card-dialog-content">
+                <img id="devil-display" src="" alt="Devil Card" class="zoomed-card">
+                <button id="close-devil" class="close-button">Close</button>
+            </div>
+        </div>
+
+        <div id="high-priestess-card" class="card-dialog">
+            <div class="card-dialog-content">
+                <img id="high-priestess-display" src="" alt="High Priestess Card" class="zoomed-card">
+                <button id="close-high-priestess" class="close-button">Close</button>
+            </div>
+        </div>
+
+        <div id="death-card" class="card-dialog">
+            <div class="card-dialog-content">
+                <img id="death-display" src="" alt="Death Card" class="zoomed-card">
+                <button id="close-hermit" class="close-button">Close</button>
+            </div>
+        </div>
+
+            <div id="final-card" class="card-dialog">
+                <div class="card-dialog-content">
+                    <img id="final-display" src="" alt="Final Card" class="zoomed-card">
+                </div>
+            </div>
+    
+
+        <div id="ghost-reveal-dialog" class="ghost-reveal hidden">
+            <p class="ghost-glow-title">🎉 Well done!</p>
+            <p class="ghost-glow-text">The Mimic was the ghost all along.</p>
+            <p class="ghost-glow-sub">✨ Draw the final card...<br>there's a surprise for you.</p>
+            <button id="reveal-surprise-btn" class="surprise-button">Lemme get my surprise!</button>
+          </div>
+          
+        
+        
+        <!-- 🎵 Suono pesca carta -->
+        <audio id="card-draw-sound" src="../assets/audio/card-draw.mp3"></audio>
+    </div>
+</body>
+</html>

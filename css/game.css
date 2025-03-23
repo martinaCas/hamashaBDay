@@ -1,0 +1,792 @@
+
+
+/* 🔹 Colonna Sinistra */
+.left-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+    max-width: 400px;
+    padding: 10px;
+}
+
+/* 🔹 VIP ID Card */
+.vip-id-card {
+    width: 100%;
+    max-width: 250px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+    margin-bottom: 15px;
+}
+
+
+
+
+
+/* 🔹 Ghost List */
+.ghost-list {
+    margin-top: 20px;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+}
+
+/* 🔹 Griglia Ghosts */
+.ghost-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    margin-top: 10px;
+}
+
+/* 🔹 Ghost Option */
+.ghost-option {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 1px solid #00ffff;
+}
+
+.ghost-option:hover {
+    background: rgba(0, 255, 255, 0.2);
+}
+
+/* 🔹 Colonna Destra */
+.right-column {
+    width: 20%;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 15px;
+    border-radius: 10px;
+}
+
+/* 🔹 Effetto mazzo impilato */
+/* Contenitore del mazzo */
+.deck-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+/* Etichetta sopra il mazzo */
+.deck-label {
+    font-size: 26px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 0 0 8px cyan;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+
+
+
+/* 🔹 Ghost Orb - Movimento */
+.ghost-orb {
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    background: url('../assets/img/ghost-orb.webp') no-repeat center;
+    background-size: contain;
+    opacity: 0.7;
+    pointer-events: none;
+    animation: ghostMove 30s infinite linear alternate;
+}
+
+/* Animazione della Ghost Orb più lenta */
+@keyframes ghostMove {
+    0% { transform: translate(10vw, 10vh); }
+    25% { transform: translate(80vw, 30vh); }
+    50% { transform: translate(50vw, 70vh); }
+    75% { transform: translate(20vw, 90vh); }
+    100% { transform: translate(5vw, 20vh); }
+}
+
+/* 🔹 Importiamo il font */
+@font-face {
+    font-family: 'JournalFont';
+    src: url('../assets/fonts/journal.ttf') format('truetype');
+}
+
+/* 🔹 Stile generale */
+/* Generale */
+body {
+    background-color: #0a0a0a;
+    color: white;
+    font-family: 'JournalFont', sans-serif;
+    text-align: center;
+    overflow-y: auto; /* Attiva lo scroll verticale */
+    height: 100vh; /* Assicura che il contenuto possa superare l’altezza dello schermo */
+
+}
+
+/* Contenitore del gioco */
+.game-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Permette alle colonne di adattarsi su schermi più piccoli */
+
+    width: 90vw;
+    height: 90vh;
+    margin: auto;
+    padding: 20px;
+    min-height: 110vh; /* Fai in modo che il contenuto superi l'altezza dello schermo */
+
+}
+
+
+
+.evidence-container {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+    border: 1px solid #00ffff;
+}
+
+#evidence-text {
+    font-size: 28px;
+    color: gray;
+}
+
+/* Colonna Centrale */
+.center-column {
+    flex: 1;
+    text-align: center;
+    max-width: 900px; /* Imposta una dimensione massima */
+    margin-top: 0;
+
+}
+
+h1 {
+    font-size: 5.5em;
+    text-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+}
+
+.intro-text {
+    font-size: 2em;
+    color: #00ffff;
+    margin-bottom: 15px;
+}
+
+/* Ghost List */
+.ghost-list {
+    margin-top: 20px;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+}
+
+.ghost-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.ghost-option {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 1px solid #00ffff;
+    transition: 0.3s;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+    font-size: 25px;
+}
+
+.ghost-option:hover {
+    background: rgba(0, 255, 255, 0.2);
+}
+
+/* Colonna Destra - Mazzo Special */
+.right-column {
+    width: 20%;
+    height: 35%;
+    text-align: center;
+    max-width: 300px; /* Imposta una dimensione massima */
+}
+
+.deck-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.deck-label {
+    font-size: 34px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 0 0 8px cyan;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* Effetto mazzo impilato */
+.card-deck {
+    position: relative;
+    width: 100px;
+    height: 150px;
+}
+
+.card {
+    position: absolute;
+    width: 100px;
+    height: 150px;
+    background: url('../assets/img/cards/card-back.png') no-repeat center;
+    background-size: cover;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    transform: rotate(calc(var(--i) * -0deg)) translateY(calc(var(--i) * -1px));
+    transition: transform 0.3s ease-in-out;
+}
+
+/* 🔹 Stile per il dialog delle carte */
+.card-dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s;
+}
+
+.card-dialog.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* 🔹 Stile delle carte */
+.card-dialog-content {
+    width: 40%;
+    max-width: 500px;
+}
+
+
+/* 🔹 Grid per disporre le carte in due righe */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 carte per riga */
+    gap: 15px; /* Aggiunge spazio tra le carte */
+    justify-items: center; /* Allinea al centro */
+    padding: 20px;
+}
+
+
+.card-grid .card {
+    width: 100px;
+    height: 150px;
+    background: url('../assets/img/card-back.png') no-repeat center;
+    background-size: cover;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.card-grid .card:hover {
+    transform: scale(1.1);
+}
+
+/* Pulsante di chiusura */
+.close-button {
+    padding: 10px 20px;
+    background: transparent;
+    border: none;
+    color: transparent;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+
+
+
+/* Contenitore del journal */
+.journal-container {
+    width: 70%;
+    max-width: 900px;
+    background: rgba(0, 0, 0, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px cyan;
+    text-align: center;
+    margin: auto;
+}
+
+/* Barra di navigazione delle tab */
+.journal-tabs {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    border-bottom: 2px solid cyan;
+}
+
+.tab-button {
+    background: black;
+    color: white;
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    text-shadow: 0 0 5px cyan;
+}
+
+.tab-button.active {
+    background: cyan;
+    color: black;
+    font-weight: bold;
+}
+
+/* Stile del contenuto del journal */
+.journal-content {
+    padding: 15px;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Stile per le opzioni dei fantasmi */
+.ghost-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.ghost-option {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 1px solid cyan;
+    transition: 0.3s;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+}
+
+.ghost-option:hover {
+    background: rgba(0, 255, 255, 0.2);
+}
+
+
+
+/* 📌 Regole per il layout su schermi più piccoli */
+@media screen and (max-width: 1024px) {
+    .game-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .left-column,
+    .center-column,
+    .right-column {
+        width: 100%;
+        max-width: 90%;
+        margin-bottom: 20px; /* Distanza tra le sezioni */
+    }
+
+    .right-column {
+        order: 3; /* Sposta la sezione "Special of the Game" in fondo */
+    }
+}
+
+/* 📌 Per schermi piccoli come smartphone */
+@media screen and (max-width: 768px) {
+    h1 {
+        font-size: 2em; /* Riduce la dimensione del titolo */
+    }
+
+    .ghost-grid {
+        grid-template-columns: repeat(3, 1fr); /* Riduce il numero di colonne */
+    }
+
+    .ghost-option {
+        font-size: 14px; /* Riduce leggermente la grandezza del testo */
+        padding: 5px;
+    }
+
+    .deck-container {
+        width: 80%;
+    }
+
+    .card {
+        width: 80px;
+        height: 120px;
+    }
+}
+
+/* 📌 Per schermi molto piccoli (tipo telefoni in modalità verticale) */
+@media screen and (max-width: 480px) {
+    h1 {
+        font-size: 1.8em;
+    }
+
+    .ghost-grid {
+        grid-template-columns: repeat(2, 1fr); /* Due colonne per facilitare la lettura */
+    }
+
+    .ghost-option {
+        font-size: 12px;
+        padding: 5px;
+    }
+
+    .deck-label {
+        font-size: 20px;
+    }
+
+    .card {
+        width: 70px;
+        height: 100px;
+    }
+}
+
+
+
+
+@keyframes memeZoom {
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+
+
+.meme-reveal {
+    animation: memeZoom 1s ease-out forwards;
+}
+
+
+
+/* 🔥 Assicura che il dialog possa contenere il video */
+#card-dialog {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    overflow: visible !important; /* Previene il taglio del video */
+    z-index: 9999; /* Porta il dialog sopra tutto */
+}
+#card-dialog.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+/* 🔹 Se il dialog ha display: none, rimuoviamolo */
+#card-dialog.hidden {
+    display: flex !important;
+    opacity: 1 !important;
+}
+
+
+
+
+/* 🔥 Effetto glow per il testo dell’indizio */
+.evidence-glow {
+    font-size: 36px;
+    font-weight: bold;
+    color: #00ffff;
+    text-align: center;
+    text-shadow: 0 0 10px #00ffff, 0 0 20px #0088ff, 0 0 30px #0066ff;
+    margin-top: 20px;
+    opacity: 0;
+    animation: fadeIn 1.5s forwards;
+}
+
+
+
+@keyframes fadeOutCard {
+    0% { opacity: 1; transform: scale(1); }
+    100% { opacity: 0; transform: scale(0.9); }
+}
+
+
+/* 🔄 Stile per evidenze nella colonna sinistra */
+.evidence-item {
+    font-size: 20px;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin: 5px 0;
+}
+/* 🌀 Effetto tremore dello schermo */
+@keyframes shake {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(-2px, 2px); }
+    50% { transform: translate(2px, -2px); }
+    75% { transform: translate(-2px, -2px); }
+    100% { transform: translate(0, 0); }
+}
+
+.shake {
+    animation: shake 0.2s linear infinite;
+}
+
+/* 🔥 Dissolvenza */
+@keyframes fadeIn {
+    0% { opacity: 0; transform: scale(0.8); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+.fade-out-card {
+    animation: fadeOutCard 1.5s forwards;
+}
+
+
+
+
+
+/* 🔹 Stili Generali */
+body {
+    background-color: #0a0a0a;
+    color: white;
+    font-family: 'JournalFont', sans-serif;
+    text-align: center;
+    overflow-y: auto;
+    height: 100vh;
+}
+
+/* 🔹 Contenitore del gioco */
+.game-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 90vw;
+    height: 90vh;
+    margin: auto;
+    padding: 20px;
+    min-height: 110vh;
+}
+
+
+
+
+
+
+/* ✨ Dissolvenza video */
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+.fade-out-video {
+    animation: fadeOut 1s forwards;
+}
+
+/* 🔥 Stile video full-screen */
+.video-fullscreen {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 600px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+    z-index: 10000;
+}
+
+.video-fullscreen-sukuna {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 1500px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+    z-index: 10000;
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(255, 255, 255, 0.3);
+    border-top-color: cyan;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.9);
+    color: white;
+    font-size: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    cursor: pointer;
+  }
+  .cards-counter {
+    margin-top: 20px;
+    font-size: 25px;
+    color: #00ffff;
+    font-weight: bold;
+}
+.ghost-fade {
+    opacity: 0.2;
+    filter: grayscale(100%);
+    pointer-events: none;
+    transition: all 0.5s ease-in-out;
+}
+
+.highlight-mimic {
+    border: 2px solid #00ffff;
+    color: #00ffff;
+    font-weight: bold;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 5px #00ffff; }
+    50% { box-shadow: 0 0 20px #00ffff; }
+    100% { box-shadow: 0 0 5px #00ffff; }
+}
+
+.ghost-reveal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.95);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+    text-align: center;
+}
+
+.ghost-reveal.hidden {
+    display: none;
+}
+
+.ghost-glow-title,
+.ghost-glow-text,
+.ghost-glow-sub {
+    color: #00ffff;
+    text-shadow: 0 0 10px #00ffff, 0 0 20px #00f, 0 0 30px #00ffff;
+    font-size: 2.2em;
+    margin: 10px;
+    font-family: 'JournalFont', sans-serif;
+}
+
+.surprise-button {
+    margin-top: 30px;
+    padding: 15px 30px;
+    font-size: 18px;
+    color: black;
+    background: #00ffff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 0 15px #00ffff;
+    transition: transform 0.2s ease;
+}
+
+.surprise-button:hover {
+    transform: scale(1.05);
+}
+
+.glow-card {
+    box-shadow: 0 0 20px 5px gold;
+    animation: pulseGlow 1.2s infinite alternate;
+}
+
+@keyframes pulseGlow {
+    from { box-shadow: 0 0 10px 2px gold; }
+    to   { box-shadow: 0 0 20px 6px gold; }
+}
+
+.gift-box {
+    cursor: pointer;
+    animation: pulseGift 1.2s infinite;
+    margin-top: 30px;
+}
+
+.gift-box img {
+    width: 100px;
+    transition: transform 0.3s;
+}
+
+.gift-box:hover img {
+    transform: scale(1.1);
+}
+
+@keyframes pulseGift {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+.hidden {
+    display: none !important;
+}
+
+.ghost-reveal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: black;
+    color: #00ffff;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 0 20px cyan;
+    z-index: 9999;
+}
+
+.ghost-reveal.show {
+    display: block;
+}
+
+#final-gift.gift-img {
+    width: 120px;
+    cursor: pointer;
+    margin-top: 30px;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+
+

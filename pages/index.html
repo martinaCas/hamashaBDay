@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phasmophobia Bday Party</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <script defer src="../js/index.js"></script>
+</head>
+<body>
+<!-- 🔹 Background con oggetti paranormali -->
+<div class="background-elements">
+    <img src="../assets/img/index-img/doll.png" class="bg-item doll" alt="Haunted Doll">
+    <img src="../assets/img/index-img/handprint.png" class="bg-item handprint" alt="Bloody Handprint">
+</div>
+
+
+    <div class="welcome-container">
+        <h1 class="glitch-title">Happy Birthday, Hamasha!</h1>
+        <p class="welcome-text">To start celebrating your birthday, click on the music box.</p>
+    
+        <!-- Music Box -->
+        <div class="music-box-container">
+            <img id="music-box" src="../assets/img/music-box.png" alt="Music Box" class="music-box">
+            <audio id="music-audio" src="../assets/audio/music-box.mp3"></audio>
+            <audio id="heartbeat-audio" src="../assets/audio/heartbeat.wav"></audio>
+
+
+        </div>
+
+                    <!-- Pulsante per rigiocare la Music Box (inizialmente nascosto) -->
+<button id="replay-music" class="replay-button hidden">Replay Music Box</button>
+    
+        <!-- Messaggio sopra il pulsante (inizialmente nascosto) -->
+        <p id="start-message" class="hidden">Press "Start Celebrate!" to begin the party!</p>
+    
+        <!-- Bottone Start (inizialmente nascosto) -->
+        <button id="start-celebrate" class="start-button hidden">Start Celebrate!</button>
+<!-- Audio per il glitch -->
+<audio id="glitch-audio" src="../assets/audio/breath.mp3"></audio>
+
+    </div>
+    
+</body>
+</html>
